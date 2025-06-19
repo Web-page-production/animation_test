@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>66回転アニメーション</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            cursor: pointer;
+        }
+
+        .number-66 {
+            display: flex;
+            align-items: center;
+            filter: drop-shadow(0 4px 20px rgba(0,0,0,0.3));
+        }
+
+        .six-left, .six-right, .kai {
+            display: inline-block;
+            transform-origin: center center;
+        }
+
+        .six-left img, .six-right img, .kai img {
+            width: 240px;
+            height: 240px;
+            display: block;
+        }
+
+        .kai img {
+            width: 100px;
+            height: 100px;
+            display: block;
+        }
+
+        .kai {
+            margin-left: 5px;
+            margin-top: 120px;
+        }
+
+        .six-right {
+            margin-left: -80px;
+        }
+
+
+        .six-left {
+            animation: none;
+        }
+
+        .six-right {
+            animation: none;
+        }
+
+        .kai {
+            animation: none;
+        }
+
+        .number-66.rotate-together {
+            animation: none;
+            transform-origin: center center;
+        }
+
+        .container:hover .six-left {
+            animation: rotateLeft 1s ease-in-out;
+        }
+
+        .container:hover .six-right {
+            animation: rotateRight 1s ease-in-out 0.5s;
+        }
+
+        .container:hover .kai {
+            animation: rotateKai 0.5s ease-in-out 1s;
+        }
+
+        .container:hover .number-66 {
+            animation: rotateTogether 1s ease-in-out 1.5s;
+        }
+
+        @keyframes rotateKai {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes rotateLeft {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes rotateRight {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes rotateTogether {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* 重複アニメーション防止のためのクラス */
+        .animation-running .six-left,
+        .animation-running .six-right,
+        .animation-running .kai,
+        .animation-running.number-66 {
+            animation-play-state: running;
+        }
+
+        .animation-paused .six-left,
+        .animation-paused .six-right,
+        .animation-paused .kai,
+        .animation-paused.number-66 {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="number-66 rotate-together animation-running" id="number66">
+            <span class="six-left">
+                <img src="image/6_rot.svg" alt="6">
+            </span>
+            <span class="six-right">
+                <img src="image/6_rot.svg" alt="6">
+            </span>
+            <span class="kai">
+                <img src="image/kai_rot.svg" alt="回">
+            </span>
+        </div>
+    </div>
+
+    <script>
+        // CSS hover でアニメーションを制御するため、JavaScriptは不要
+    </script>
+</body>
+</html>
